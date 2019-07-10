@@ -1,0 +1,114 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>Register</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form class="example-form">
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
+              <mat-error>Username required</mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password" required>
+              <mat-error>Password required</mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Confirm Password" [(ngModel)]="confirmPassword" type="password"
+                name="confirmPassword" required />
+              <div class="error" *ngIf="confirmPass()">Password not matched</div>
+            </mat-form-field>
+            <!-- <div [hidden]="confirmPass(confirmPassword)">Not matched</div> -->
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Email" [(ngModel)]="email" type="email" name="email" required>
+              <div class="error" *ngIf="emailValidation()">Invalid Email format</div>
+              <mat-error>Email required</mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Address" [(ngModel)]="address" name="address" required>
+              <mat-error>Address required</mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>City</mat-label>
+              <mat-select name="city" [(ngModel)]="city">
+                <mat-option *ngFor="let city of cities" [value]="city.value">
+                  {{city.viewValue}}
+                </mat-option>
+              </mat-select>
+              <mat-error>City required</mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>State</mat-label>
+              <mat-select name="state" [(ngModel)]="state" required>
+                <mat-option *ngFor="let state of states" [value]="state.value">
+                  {{state.viewValue}}
+                </mat-option>
+              </mat-select>
+              <mat-error>State required</mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Pincode" [(ngModel)]="pincode" type="number" name="pincode" required>
+              <mat-error>Pincode required</mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Phone" [(ngModel)]="phone" type="number" name="phone" required>
+              <mat-error>Phone required</mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>Role</mat-label>
+              <mat-select name="role" [(ngModel)]="role">
+                <mat-option *ngFor="let role of roles" [value]="role.value">
+                  {{role.viewValue}}
+                </mat-option>
+              </mat-select>
+              <mat-error>Role required</mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </form>
+    <!-- <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner> -->
+  </mat-card-content>
+  <div class="" *ngIf="validationSuccess">{{errorMessage}}</div>
+  <mat-card-actions>
+    <button mat-raised-button (click)="register()" color="primary">Login</button>
+  </mat-card-actions>
+</mat-card>
